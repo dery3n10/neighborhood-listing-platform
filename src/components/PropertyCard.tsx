@@ -28,9 +28,9 @@ export default function PropertyCard({
 
       <div className="space-y-4 p-5">
         <div>
-          <h2 className="text-xl font-bold text-slate-950">
+          <h3 className="text-xl font-bold text-slate-950">
             {property.title}
-          </h2>
+          </h3>
 
           <address className="mt-1 not-italic text-slate-600">
             {property.streetAddress}, {property.city}, {property.state}{" "}
@@ -54,7 +54,7 @@ export default function PropertyCard({
         <div className="flex flex-wrap gap-3">
           <a
             href={property.detailsUrl}
-            className="rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300"
+            className="rounded-lg bg-blue-700 px-4 py-2 font-semibold text-white hover:bg-blue-800 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2"
           >
             View details for {property.streetAddress}
           </a>
@@ -62,13 +62,13 @@ export default function PropertyCard({
           <button
             type="button"
             aria-pressed={isFavorite}
-            aria-label={`${isFavorite ? "Remove" : "Add"} ${property.streetAddress} ${
-              isFavorite ? "from" : "to"
-            } favorites`}
+            aria-label={`Favorite ${property.streetAddress}`}
             onClick={() => setIsFavorite((current) => !current)}
-            className="rounded-lg border border-slate-400 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-blue-300"
+            className={`rounded-lg border border-slate-400 px-4 py-2 font-semibold text-slate-800 hover:bg-slate-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-700 focus-visible:ring-offset-2 ${
+              isFavorite ? "bg-blue-100" : "bg-white"
+            }`}
           >
-            {isFavorite ? "Saved" : "Favorite"}
+            Favorite
           </button>
         </div>
       </div>
