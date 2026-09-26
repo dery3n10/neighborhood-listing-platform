@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 300" role="img" aria-labelledby="title description">
+  <title id="title">Neighborhood Home Services sample sponsor graphic</title>
+  <desc id="description">A fictional sponsor graphic featuring a house and tools icon.</desc>
+
+  <rect width="800" height="300" rx="24" fill="#ecfdf5"/>
+  <circle cx="155" cy="150" r="90" fill="#047857"/>
+
+  <polygon points="95,145 155,95 215,145" fill="#ffffff"/>
+  <rect x="110" y="140" width="90" height="70" fill="#ffffff"/>
+  <rect x="145" y="165" width="25" height="45" fill="#047857"/>
+
+  <text x="285" y="135" font-family="Arial, sans-serif" font-size="40" font-weight="700" fill="#064e3b">
+    Neighborhood Home Services
+  </text>
+  <text x="285" y="185" font-family="Arial, sans-serif" font-size="24" fill="#065f46">
+    Fictional sample sponsor
+  </text>
+</svg>
