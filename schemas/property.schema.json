@@ -1,0 +1,131 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.com/schemas/property.schema.json",
+  "title": "PropertyListing",
+  "description": "Runtime contract for a synthetic neighborhood property listing.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "property_id",
+    "title",
+    "address",
+    "zip_code",
+    "price",
+    "bedrooms",
+    "bathrooms",
+    "square_feet",
+    "amenities",
+    "image_src",
+    "image_alt",
+    "details_url",
+    "local_sponsors"
+  ],
+  "properties": {
+    "property_id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3,
+      "maxLength": 100
+    },
+    "address": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["street", "city", "state"],
+      "properties": {
+        "street": {
+          "type": "string",
+          "minLength": 3
+        },
+        "city": {
+          "type": "string",
+          "minLength": 2
+        },
+        "state": {
+          "type": "string",
+          "pattern": "^[A-Z]{2}$"
+        }
+      }
+    },
+    "zip_code": {
+      "type": "string",
+      "pattern": "^[0-9]{5}(-[0-9]{4})?$"
+    },
+    "price": {
+      "type": "number",
+      "minimum": 0
+    },
+    "bedrooms": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "bathrooms": {
+      "type": "number",
+      "minimum": 0
+    },
+    "square_feet": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "amenities": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "AIR_CONDITIONING",
+          "CENTRAL_HEATING",
+          "GARAGE_PARKING",
+          "SWIMMING_POOL",
+          "EV_CHARGING",
+          "SOLAR_PANELS"
+        ]
+      }
+    },
+    "image_src": {
+      "type": "string",
+      "minLength": 1
+    },
+    "image_alt": {
+      "type": "string",
+      "minLength": 10
+    },
+    "details_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "local_sponsors": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "sponsor_id",
+          "business_name",
+          "tier",
+          "target_url"
+        ],
+        "properties": {
+          "sponsor_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "business_name": {
+            "type": "string",
+            "minLength": 2
+          },
+          "tier": {
+            "type": "string",
+            "enum": ["standard", "premium", "exclusive"]
+          },
+          "target_url": {
+            "type": "string",
+            "format": "uri"
+          }
+        }
+      }
+    }
+  }
+}

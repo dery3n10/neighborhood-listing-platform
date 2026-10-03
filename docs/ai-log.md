@@ -81,3 +81,79 @@ The instructor-provided sponsor images were unavailable. I did not download rand
 **How I verified it:** I confirmed that the SVG files loaded locally, included meaningful image information, and appeared correctly at 375 px, 768 px, and 1280 px.
 
 **Related commit:** `feat: add sample listing and sponsor data`
+
+# Lab 3 AI Collaboration Log
+
+## Google AI Studio — Structured Synthetic Property Data
+
+**Date:** October 2, 2026
+
+**Model:** Gemini 3.1 Pro Preview
+
+**Prompt:** Generate exactly five entirely fictional residential property listings in Southern California for a college data-validation lab. Use valid UUIDs, uppercase state abbreviations, valid five-digit California ZIP codes, nonnegative numeric values, controlled amenity values, at least one local sponsor per property, safe fictional URLs under `example.com`, and the configured structured-output schema. Return only structured JSON.
+
+**Output summary:** Gemini generated five synthetic property records with metadata, addresses, prices, property facts, controlled amenities, safe URLs, and fictional sponsor information.
+
+**What I used:** I used the five generated records as synthetic seed data in `data/generated/synthetic-properties.json`. I also used Gemini 3.1 Pro Preview because the older model named in the course instructions was no longer available.
+
+**What I rejected or changed:** Google AI Studio rejected the `additionalProperties` keyword because its structured-output editor supports only part of JSON Schema. I removed that keyword only from `schemas/property-generation.schema.json`. I kept `additionalProperties: false` in the strict local Ajv schema. I did not copy the model’s Thoughts section into the JSON file because it was not part of the structured data.
+
+**How I verified it:** I parsed the file with Node.js, confirmed that it contained exactly five records, checked that `_metadata.is_synthetic` was `true`, confirmed that all URLs used `https://example.com/`, and validated every record through the Ajv contract tests.
+
+**Evidence:** `docs/ai-studio-prompt-output.png` and `docs/ai-studio-run-settings.png`
+
+**Related commit:** `feat: add structured synthetic property data`
+
+## ChatGPT — Runtime Validation and Test Design
+
+**Date:** October 2, 2026
+
+**Prompt:** Help implement Lab 3 using the existing Next.js and TypeScript project. Create a strict JSON Schema, Ajv runtime validator, generated TypeScript contract, valid and invalid fixtures, Vitest contract tests, safe interface integration, and documentation. Preserve the existing Lab 2 components and prevent invalid external data from reaching `PropertyCard`.
+
+**Output summary:** ChatGPT proposed a Draft 2020-12 property schema, an Ajv validator, generated TypeScript types, fixture-generation code, six contract tests, a validated-data adapter, and a safe warning path for rejected records.
+
+**What I used:** I used the Ajv boundary validator, the schema-generated `PropertyListing` interface, the required invalid fixtures, the Vitest assertions, and the adapter that converts validated snake_case data into the existing camelCase `Property` type.
+
+**What I rejected or changed:** I did not use `npm audit fix --force` because it would have installed incompatible Next.js 14 tooling. I also did not render the fictional `example.com` image URLs because they do not contain real images. The interface uses the local property placeholder after each record passes validation.
+
+**How I verified it:** I ran `npm run lint`, `npx vitest run`, and `npm run build`. Lint passed, all six tests passed, and the production build completed successfully. I also opened the local website and confirmed that five validated property cards rendered.
+
+**Evidence:** `docs/contract-test-output.txt` and `docs/validated-property-cards.png`
+
+**Related commit:** `feat: validate property data before rendering`
+
+## ChatGPT — Normalization Critique
+
+**Date:** October 2, 2026
+
+**Prompt:** Critique the use of embedded `local_sponsors`, a conceptual `PropertySponsor` relationship, and a controlled amenity enum. Compare the best choice for a small course application with a production relational database.
+
+**Output summary:** ChatGPT explained that embedded sponsor copies can create update, insertion, and deletion anomalies. It recommended separate `Sponsor` and `PropertySponsor` tables for normalized storage while allowing the interface to receive an embedded validated projection. It recommended controlled amenity values for the course application and separate amenity tables when production requirements become more flexible.
+
+**What I used:** I used the distinction between a normalized storage model and a denormalized interface projection. I also accepted the controlled amenity enum for the current project.
+
+**What I rejected:** I did not fully normalize every interface response because the small course application benefits from self-contained property records.
+
+**How I verified it:** I compared the recommendation with the project requirements, the JSON Schema, the user-interface needs, and Gemini’s independent critique.
+
+**Evidence:** `docs/chatgpt-normalization-critique.md`
+
+## Google AI Studio / Gemini — Normalization Critique
+
+**Date:** October 2, 2026
+
+**Model:** Gemini 3.1 Pro Preview
+
+**Prompt:** Review the embedded sponsor array, many-to-many `PropertySponsor` relationship, and amenity-storage options. Explain anomalies and compare a small course application with a production relational database.
+
+**Output summary:** Gemini identified update, insertion, and deletion anomalies caused by duplicated embedded sponsor data. It recommended normalized sponsor and join tables for production. It rejected free-text amenities, accepted controlled enums for the small application, and recommended separate amenity tables when more flexibility or metadata is required.
+
+**What I used:** I accepted the recommendation to keep the current course response simple while documenting a normalized production design.
+
+**What I rejected or deferred:** I deferred separate `Amenity` and `PropertyAmenity` tables because the current amenity list is small and stable. I also deferred a complete database implementation because the lab focuses on contracts, validation, and interface safety.
+
+**How I verified it:** I compared Gemini’s recommendation with ChatGPT’s critique and recorded the final tradeoffs in ADR 001.
+
+**Evidence:** `docs/gemini-normalization-critique.md`
+
+**Related decision:** `docs/adr/001-data-contract.md`

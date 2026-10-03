@@ -1,7 +1,11 @@
 import PropertyCard from "@/components/PropertyCard";
 import SearchFilters from "@/components/SearchFilters";
 import SponsorBanner from "@/components/SponsorBanner";
-import { properties, sponsors } from "@/data/listings";
+import { sponsors } from "@/data/listings";
+import {
+  validatedProperties,
+  validationErrors,
+} from "@/data/validatedListings";
 
 export default function Home() {
   return (
@@ -61,8 +65,17 @@ export default function Home() {
             Available properties
           </h2>
 
+          {validationErrors.length > 0 && (
+            <div
+              role="alert"
+              className="mt-6 rounded-lg border border-amber-300 bg-amber-50 p-4 text-amber-950"
+            >
+              Some property records failed validation and were not displayed.
+            </div>
+          )}
+
           <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {properties.map((property, index) => (
+            {validatedProperties.map((property, index) => (
               <PropertyCard
                 key={property.id}
                 property={property}
