@@ -1,0 +1,148 @@
+{
+  "type": "object",
+  
+  "required": ["_metadata", "records"],
+  "properties": {
+    "_metadata": {
+      "type": "object",
+      
+      "required": ["generated_at", "is_synthetic", "generator"],
+      "properties": {
+        "generated_at": {
+          "type": "string",
+          "description": "Generation date in YYYY-MM-DD format."
+        },
+        "is_synthetic": {
+          "type": "boolean",
+          "description": "Must be true because every record is fictional."
+        },
+        "generator": {
+          "type": "string",
+          "description": "Name of the AI tool that generated the records."
+        }
+      }
+    },
+    "records": {
+      "type": "array",
+      "minItems": 5,
+      "maxItems": 5,
+      "items": {
+        "type": "object",
+        
+        "required": [
+          "property_id",
+          "title",
+          "address",
+          "zip_code",
+          "price",
+          "bedrooms",
+          "bathrooms",
+          "square_feet",
+          "amenities",
+          "image_src",
+          "image_alt",
+          "details_url",
+          "local_sponsors"
+        ],
+        "properties": {
+          "property_id": {
+            "type": "string",
+            "format": "uuid"
+          },
+          "title": {
+            "type": "string"
+          },
+          "address": {
+            "type": "object",
+            
+            "required": ["street", "city", "state"],
+            "properties": {
+              "street": {
+                "type": "string"
+              },
+              "city": {
+                "type": "string"
+              },
+              "state": {
+                "type": "string"
+              }
+            }
+          },
+          "zip_code": {
+            "type": "string"
+          },
+          "price": {
+            "type": "number",
+            "minimum": 0
+          },
+          "bedrooms": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "bathrooms": {
+            "type": "number",
+            "minimum": 0
+          },
+          "square_feet": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "amenities": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": [
+                "AIR_CONDITIONING",
+                "CENTRAL_HEATING",
+                "GARAGE_PARKING",
+                "SWIMMING_POOL",
+                "EV_CHARGING",
+                "SOLAR_PANELS"
+              ]
+            }
+          },
+          "image_src": {
+            "type": "string"
+          },
+          "image_alt": {
+            "type": "string"
+          },
+          "details_url": {
+            "type": "string",
+            "format": "uri"
+          },
+          "local_sponsors": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              
+              "required": [
+                "sponsor_id",
+                "business_name",
+                "tier",
+                "target_url"
+              ],
+              "properties": {
+                "sponsor_id": {
+                  "type": "string",
+                  "format": "uuid"
+                },
+                "business_name": {
+                  "type": "string"
+                },
+                "tier": {
+                  "type": "string",
+                  "enum": ["standard", "premium", "exclusive"]
+                },
+                "target_url": {
+                  "type": "string",
+                  "format": "uri"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
