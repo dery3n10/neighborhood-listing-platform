@@ -1,0 +1,84 @@
+{
+  "_metadata": {
+    "generated_at": "2026-10-02",
+    "is_synthetic": true,
+    "generator": "Gemini 3.1 Pro Preview"
+  },
+  "records": [
+    {
+      "property_id": "123e4567-e89b-12d3-a456-426614174001",
+      "title": "Sunny San Diego Cottage",
+      "address": { "street": "123 Ocean Breeze Way", "city": "San Diego", "state": "CA" },
+      "zip_code": "92109",
+      "price": 850000,
+      "bedrooms": 3,
+      "bathrooms": 2,
+      "square_feet": 1500,
+      "amenities": ["AIR_CONDITIONING", "SWIMMING_POOL"],
+      "image_src": "https://example.com/images/prop1.jpg",
+      "image_alt": "Front view of the sunny San Diego cottage",
+      "details_url": "https://example.com/properties/123e4567",
+      "local_sponsors": [{ "sponsor_id": "987e4567-e89b-12d3-a456-426614174001", "business_name": "San Diego Surf Shop", "tier": "standard", "target_url": "https://example.com/sponsors/sd-surf" }]
+    },
+    {
+      "property_id": "123e4567-e89b-12d3-a456-426614174002",
+      "title": "Modern LA Loft",
+      "address": { "street": "456 Downtown Ave", "city": "Los Angeles", "state": "CA" },
+      "zip_code": "90014",
+      "price": 1200000,
+      "bedrooms": 2,
+      "bathrooms": 2.5,
+      "square_feet": 1800,
+      "amenities": ["CENTRAL_HEATING", "EV_CHARGING"],
+      "image_src": "https://example.com/images/prop2.jpg",
+      "image_alt": "Interior view of the modern LA loft",
+      "details_url": "https://example.com/properties/prop2",
+      "local_sponsors": [{ "sponsor_id": "987e4567-e89b-12d3-a456-426614174002", "business_name": "Downtown Coffee Roasters", "tier": "premium", "target_url": "https://example.com/sponsors/coffee" }]
+    },
+    {
+      "property_id": "123e4567-e89b-12d3-a456-426614174003",
+      "title": "Santa Barbara Villa",
+      "address": { "street": "789 Vineyard Rd", "city": "Santa Barbara", "state": "CA" },
+      "zip_code": "93108",
+      "price": 3500000,
+      "bedrooms": 5,
+      "bathrooms": 4,
+      "square_feet": 4500,
+      "amenities": ["AIR_CONDITIONING", "SWIMMING_POOL", "SOLAR_PANELS", "GARAGE_PARKING"],
+      "image_src": "https://example.com/images/prop3.jpg",
+      "image_alt": "Exterior of the large Santa Barbara villa",
+      "details_url": "https://example.com/properties/prop3",
+      "local_sponsors": [{ "sponsor_id": "987e4567-e89b-12d3-a456-426614174003", "business_name": "Coastal Wine Tours", "tier": "exclusive", "target_url": "https://example.com/sponsors/wine" }]
+    },
+    {
+      "property_id": "123e4567-e89b-12d3-a456-426614174004",
+      "title": "Irvine Family Home",
+      "address": { "street": "321 Suburbia Ln", "city": "Irvine", "state": "CA" },
+      "zip_code": "92614",
+      "price": 1400000,
+      "bedrooms": 4,
+      "bathrooms": 3,
+      "square_feet": 2200,
+      "amenities": ["CENTRAL_HEATING", "GARAGE_PARKING", "EV_CHARGING"],
+      "image_src": "https://example.com/images/prop4.jpg",
+      "image_alt": "Front driveway of the Irvine family home",
+      "details_url": "https://example.com/properties/prop4",
+      "local_sponsors": [{ "sponsor_id": "987e4567-e89b-12d3-a456-426614174004", "business_name": "Orange County Plumbers", "tier": "standard", "target_url": "https://example.com/sponsors/plumbers" }]
+    },
+    {
+      "property_id": "123e4567-e89b-12d3-a456-426614174005",
+      "title": "Palm Springs Mid-Century",
+      "address": { "street": "654 Desert Oasis Blvd", "city": "Palm Springs", "state": "CA" },
+      "zip_code": "92262",
+      "price": 1750000,
+      "bedrooms": 3,
+      "bathrooms": 3,
+      "square_feet": 2100,
+      "amenities": ["AIR_CONDITIONING", "SWIMMING_POOL", "SOLAR_PANELS"],
+      "image_src": "https://example.com/images/prop5.jpg",
+      "image_alt": "Backyard pool of the Palm Springs home",
+      "details_url": "https://example.com/properties/prop5",
+      "local_sponsors": [{ "sponsor_id": "987e4567-e89b-12d3-a456-426614174005", "business_name": "Desert Landscaping Pros", "tier": "premium", "target_url": "https://example.com/sponsors/landscaping" }]
+    }
+  ]
+}

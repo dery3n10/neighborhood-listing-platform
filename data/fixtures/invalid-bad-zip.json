@@ -1,0 +1,29 @@
+{
+  "property_id": "123e4567-e89b-12d3-a456-426614174001",
+  "title": "Sunny San Diego Cottage",
+  "address": {
+    "street": "123 Ocean Breeze Way",
+    "city": "San Diego",
+    "state": "CA"
+  },
+  "zip_code": "9210",
+  "price": 850000,
+  "bedrooms": 3,
+  "bathrooms": 2,
+  "square_feet": 1500,
+  "amenities": [
+    "AIR_CONDITIONING",
+    "SWIMMING_POOL"
+  ],
+  "image_src": "https://example.com/images/prop1.jpg",
+  "image_alt": "Front view of the sunny San Diego cottage",
+  "details_url": "https://example.com/properties/123e4567",
+  "local_sponsors": [
+    {
+      "sponsor_id": "987e4567-e89b-12d3-a456-426614174001",
+      "business_name": "San Diego Surf Shop",
+      "tier": "standard",
+      "target_url": "https://example.com/sponsors/sd-surf"
+    }
+  ]
+}
